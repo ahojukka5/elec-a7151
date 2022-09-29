@@ -29,5 +29,5 @@ void Rectangle() {
   cout << "Please enter width and height" << endl;
   cin >> a >> b;
   cout << "Area: " << a * b << endl;
-  cout << "Circumference: " << 2 * a * b << endl;
+  cout << "Circumference: " << 2 * (a + b) << endl;
 }
