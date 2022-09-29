@@ -5,11 +5,14 @@
 
 void Adder(std::vector<std::string>& names) {
   std::string s;
+  std::cout << "Enter a name:" << std::endl;
   std::cin >> s;
   names.push_back(s);
+  std::cout << "Number of names in the vector: " << names.size() << std::endl;
 }
 
 void Remover(std::vector<std::string>& names) {
+  std::cout << "Removing the last element:" << std::endl;
   std::cout << names.back() << std::endl;
   names.pop_back();
 }
