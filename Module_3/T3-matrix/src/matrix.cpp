@@ -1,5 +1,6 @@
 #include "matrix.hpp"
 
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -25,6 +26,7 @@ Matrix Rotate90Deg(const Matrix &m) {
     for (int i = 0, N = n.size(); i < N; i++) {
       n[j].push_back(m[i][j]);
     }
+    std::reverse(n[j].begin(), n[j].end());
   }
   return n;
 }
