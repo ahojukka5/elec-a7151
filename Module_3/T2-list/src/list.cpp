@@ -8,7 +8,7 @@ std::istream& GetLines(std::istream& is, std::list<std::string>& list) {
   list.clear();
   std::string s;
   do {
-    is >> s;
+    std::getline(is, s);
     list.push_back(s);
   } while (is);
   return is;
@@ -21,9 +21,6 @@ void Print(const std::list<std::string>& list) {
 }
 
 void SortAndUnique(std::list<std::string>& list) {
-  std::vector<std::string> vec(list.begin(), list.end());
-  std::sort(vec.begin(), vec.end());
-  vec.erase(std::unique(vec.begin(), vec.end()), vec.end());
-  list.clear();
-  for (const auto& item : vec) list.push_back(item);
+  list.sort();
+  list.unique();
 }
