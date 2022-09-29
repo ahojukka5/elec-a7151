@@ -8,7 +8,8 @@ void Adder(std::vector<std::string>& names) {
   std::cout << "Enter a name:" << std::endl;
   std::cin >> s;
   names.push_back(s);
-  std::cout << "Number of names in the vector: " << names.size() << std::endl;
+  std::cout << "Number of names in the vector:" << std::endl;
+  std::cout << names.size() << std::endl;
 }
 
 void Remover(std::vector<std::string>& names) {
