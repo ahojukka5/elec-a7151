@@ -33,6 +33,7 @@ void Customer::Print() const {
   std::cout << "Customer: " << m_name << ", " << m_id << ", has "
             << GetLoanAmount() << " books on loan:" << std::endl;
   for (auto book : GetLoans()) {
+    std::cout << "- ";
     book.Print();
   }
 }
