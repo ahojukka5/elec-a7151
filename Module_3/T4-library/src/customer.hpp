@@ -1,10 +1,14 @@
 ﻿#ifndef ELEC_AS_CPP_CUSTOMER
 #define ELEC_AS_CPP_CUSTOMER
 
+#include <iostream>
 #include <string>
 #include <vector>
 
 #include "book.hpp"
+
+using std::string;
+using std::vector;
 
 class Customer {
  public:
@@ -14,7 +18,7 @@ class Customer {
    * \param name the customer's name (reference to const string)
    * \param id the customer number (reference to const string)
    */
-  
+  Customer(const string &name, const string &id);
 
   /**
    * \brief Get the Customer's name as a string, takes no parameters.
@@ -26,7 +30,7 @@ class Customer {
    *
    * \return std::string
    */
-  
+  const string &GetName() const;
 
   /**
    * \brief Get the Customer's customer number as a string, takes no
@@ -39,7 +43,7 @@ class Customer {
    *
    * \return std::string
    */
-  
+  const string &GetID() const;
 
   /**
    * \brief Get the Customer's number of loans as an int, takes no parameters.
@@ -51,7 +55,7 @@ class Customer {
    *
    * \return int
    */
-  
+  int GetLoanAmount() const;
 
   /**
    * \brief Get the Customer's loans as a vector<Book>, takes no parameters.
@@ -63,7 +67,7 @@ class Customer {
    *
    * \return std::vector<Book>
    */
-  
+  const vector<Book> &GetLoans() const;
 
   /**
    * \brief loans a book for the customer
@@ -74,7 +78,7 @@ class Customer {
    *
    * \return  the result of loaning (from Book::loan function).
    */
-  
+  bool LoanBook(Book &book);
 
   /**
    * \brief Returns a book loaned by the customer. The function returns
@@ -84,7 +88,7 @@ class Customer {
    *
    * \param b a reference to a book
    */
-  
+  void ReturnBook(Book &book);
 
   /**
    * \brief write the customer's information to the standard output stream.
@@ -106,15 +110,12 @@ class Customer {
    *
    * (Book details must be printed on a single line)
    */
-  
+  void Print() const;
 
  private:
-  /* Member variables:
-   * name (string)
-   * customer id (string)
-   * vector of loaned books (vector<Book>)
-   */
-  
+  string m_name;
+  string m_id;
+  vector<Book> m_books;
 };
 
 #endif

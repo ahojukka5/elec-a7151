@@ -7,6 +7,9 @@
 #include "book.hpp"
 #include "customer.hpp"
 
+using std::string;
+using std::vector;
+
 class Library {
  public:
   /**
@@ -14,7 +17,7 @@ class Library {
    *
    * \param name the library's name (const reference to string)
    */
-  
+  explicit Library(const string &name);
 
   /**
    * \brief Get the library's name as a string, takes no parameters.
@@ -26,7 +29,7 @@ class Library {
    *
    * \return std::string
    */
-  
+  const string &GetName() const;
 
   /**
    * \brief Get the Library's books as a reference to a vector<Book>, takes no
@@ -36,7 +39,7 @@ class Library {
    *
    * \return std::vector<Book>&
    */
-  
+  vector<Book> &GetBooks();
 
   /**
    * \brief Get the Library's customers as a reference to a vector<Customer>,
@@ -46,7 +49,7 @@ class Library {
    *
    * \return std::vector<Customer>&
    */
-  
+  vector<Customer> &GetCustomers();
 
   /**
    * \brief Searches for a book by its name.
@@ -59,7 +62,7 @@ class Library {
    * not found, a new book with an empty strings as parameters for the name,
    * author and isbn is returned.
    */
-  
+  const Book FindBookByName(const string &name);
 
   /**
    * \brief Searches for books by their author.
@@ -71,7 +74,7 @@ class Library {
    * \return a vector of Books with the specified author. If no books are found,
    * an empty vector is returned.
    */
-  
+  const vector<Book> FindBooksByAuthor(const string &author);
 
   /**
    * \brief Returns  a vector of loaned Books, takes no parameters.
@@ -81,7 +84,7 @@ class Library {
    * \return a vector of loaned Books. If no books are found,
    * an empty vector is returned.
    */
-  
+  const vector<Book> FindAllLoanedBooks();
 
   /**
    * \brief Searches for a customer with specfied id
@@ -93,15 +96,16 @@ class Library {
    * \return A copy of the found customer. if a Customer is not found, a new
    * Customer with empty name and id is returned.
    */
-  
+  const Customer FindCustomer(const string &id);
 
  private:
-  /* Member variables:
-   * name (string)
-   * books (vector<Book>)
-   * customers (vector<Customer>)
-   */
-  
+  template <typename C>
+  const vector<Book> FindBooksBy(C condition);
+
+  string m_name;
+  vector<Book> m_books;
+  vector<Customer> m_customers;
+  int cnt = 0;
 };
 
 #endif

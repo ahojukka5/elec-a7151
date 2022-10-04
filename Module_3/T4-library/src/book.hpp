@@ -2,6 +2,7 @@
 #define ELEC_AS_CPP_BOOK
 
 #include <ctime>
+#include <iostream>
 #include <string>
 
 /**
@@ -27,7 +28,7 @@ struct Date {
   static Date Today() {
     Date d;
     std::time_t t = time(0);
-    struct tm* now = localtime(&t);
+    struct tm *now = localtime(&t);
     d.day = now->tm_mday;
     d.month = now->tm_mon + 1;
     d.year = now->tm_year + 1900;
@@ -48,7 +49,8 @@ class Book {
    * \param due_date due date as a Date structure (Date), which is by default
    *                  0-0-0
    */
-  
+  Book(const std::string &name, const std::string &author,
+       const std::string &isbn, bool loaned = false, Date due_data = {0, 0, 0});
 
   /**
    * \brief Get the Name of the book. It has no parameters.
@@ -60,7 +62,7 @@ class Book {
    *
    * \return the Book's name as a std::string
    */
-  
+  const std::string &GetName() const;
 
   /**
    * \brief Get the Book's author as a string, takes no parameters.
@@ -72,7 +74,7 @@ class Book {
    *
    * \return std::string
    */
-  
+  const std::string &GetAuthor() const;
 
   /**
    * \brief Get the Book's ISBN as a string, takes no parameters.
@@ -84,7 +86,7 @@ class Book {
    *
    * \return std::string
    */
-  
+  const std::string &GetISBN() const;
 
   /**
    * \brief Get the Book's status as a bool, takes no parameters.
@@ -97,7 +99,7 @@ class Book {
    * \return true if the book is loaned
    * \return false otherwise
    */
-  
+  bool GetStatus() const;
 
   /**
    * \brief Get the Book's due date, takes no parameters.
@@ -109,7 +111,7 @@ class Book {
    *
    * \return Date
    */
-  
+  const Date &GetDueDate() const;
 
   /**
    * \brief Loans the book
@@ -129,7 +131,7 @@ class Book {
    * \return true if loaning is successful
    * \return false otherwise.
    */
-  
+  bool Loan();
 
   /**
    * \brief Restores the book status to not loaned
@@ -140,7 +142,7 @@ class Book {
    *
    * Function identifier: Restore
    */
-  
+  void Restore();
 
   /**
    * \brief Prints the book's information to the standard output stream.
@@ -158,7 +160,9 @@ class Book {
    *
    * Function identifier: Print
    */
-  
+  void Print() const;
+
+  bool operator==(const Book &rhs);
 
  private:
   std::string name_;
