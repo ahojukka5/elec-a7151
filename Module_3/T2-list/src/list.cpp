@@ -7,10 +7,10 @@
 std::istream& GetLines(std::istream& is, std::list<std::string>& list) {
   list.clear();
   std::string s;
-  do {
+  while (is) {
     std::getline(is, s);
-    list.push_back(s);
-  } while (is);
+    if (is) list.push_back(s);
+  };
   return is;
 }
 
