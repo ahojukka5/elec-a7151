@@ -11,7 +11,10 @@ Book::Book(const std::string &name, const std::string &author,
       loaned_(loaned),
       due_date_(due_date) {}
 
-bool Book::operator==(const Book &rhs) { return isbn_ == rhs.isbn_; }
+bool Book::operator==(const Book &rhs) {
+  return (name_ == rhs.name_) && (author_ == rhs.author_) &&
+         (isbn_ == rhs.isbn_);
+}
 
 const std::string &Book::GetName() const { return name_; }
 
