@@ -8,7 +8,7 @@ PokemonCollection::PokemonCollection(PokemonCollection collection,
                                      PokemonCollection collection2) {
   for (const auto &p : collection) Add(p.first, p.second);
   for (const auto &p : collection2) Add(p.first, p.second);
-  pokemons_.sort();
+  SortById();
   pokemons_.unique();
 }
 
@@ -26,7 +26,7 @@ bool PokemonCollection::Remove(const std::string &name, size_t id) {
 
 void PokemonCollection::Print() const {
   for (const auto &p : pokemons_) {
-    std::cout << "id: " << p.first << ", name: " << p.second << std::endl;
+    std::cout << "id: " << p.second << ", name: " << p.first << std::endl;
   }
 }
 
