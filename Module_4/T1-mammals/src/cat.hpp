@@ -19,7 +19,13 @@
  *
  */
 class Cat : public Mammal {
-  
+ public:
+  Cat(const std::string &name, int weight);
+  const std::string &GetName() const;
+  static std::string MakeSound();
+
+ private:
+  const std::string name_;
 };
 
 #endif
