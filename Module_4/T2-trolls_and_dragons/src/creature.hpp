@@ -40,6 +40,8 @@ class Creature {
    */
   int GetHitPoints() const;
 
+  friend std::ostream& operator<<(std::ostream& os, const Creature& c);
+
  private:
   std::string name_;
   const std::string type_;
@@ -47,6 +49,5 @@ class Creature {
 };
 
 // Define the '<<' operator here
-
 
 #endif
