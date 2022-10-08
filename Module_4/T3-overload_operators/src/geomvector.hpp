@@ -26,8 +26,11 @@ class GeomVector {
    */
   GeomVector operator+(const GeomVector& a);
 
-  // Define the remaining operators here
-  
+  GeomVector operator/(double k);
+
+  friend bool operator==(const GeomVector& a, const GeomVector& b);
+
+  friend bool operator!=(const GeomVector& a, const GeomVector& b);
 
   /**
    * \brief Overload operator for the scalar multiplication of a GeomVector
@@ -56,5 +59,8 @@ class GeomVector {
  private:
   double x_, y_, z_;
 };
+
+bool operator>(const GeomVector& a, const GeomVector& b);
+bool operator<(const GeomVector& a, const GeomVector& b);
 
 #endif
