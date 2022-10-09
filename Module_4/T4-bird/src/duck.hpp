@@ -3,8 +3,10 @@
 
 #include "bird.hpp"
 
+using std::ostream;
+
 /**
- * \brief TODO: Implement the Duck class.
+ * \brief Implement the Duck class.
  *
  * Class' constructor takes a string as a parameter, which is the duck's name.
  * When the Speak method is called a duck should say: <name>: QUACK\n
@@ -13,7 +15,10 @@
  * Due to the simplicity of the class, all of its member functions are
  * implemented in this header file.
  */
-
-
+class Duck : public Bird {
+ public:
+  using Bird::Bird;
+  void Speak(ostream &os) const { os << GetName() << ": QUACK\n"; }
+};
 
 #endif

@@ -3,8 +3,10 @@
 
 #include "bird.hpp"
 
+using std::ostream;
+
 /**
- * \brief TODO: Implement the Owl class.
+ * \brief Implement the Owl class.
  *
  * Class' constructor takes a string as an argument, which is the owl's name.
  * When the Speak method is called an owl should say: <name>: WHUU\n
@@ -13,7 +15,10 @@
  * Due to the simplicity of the class, all of its member functions are
  * implemented in this header file.
  */
-
-
+class Owl : public Bird {
+ public:
+  using Bird::Bird;
+  void Speak(ostream &os) const { os << GetName() << ": WHUU\n"; }
+};
 
 #endif
