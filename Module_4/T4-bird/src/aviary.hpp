@@ -16,6 +16,7 @@ class Aviary {
   Aviary() {}
 
   Aviary(const Aviary&) = delete;
+  Aviary& operator=(Aviary const&) = delete;
 
   /**
    * \brief method Add adds the given bird to the aviary.
