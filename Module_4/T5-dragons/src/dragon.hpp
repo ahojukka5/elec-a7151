@@ -62,7 +62,27 @@ struct Food {
  * to a list of Treasure objects as a parameter.
  *
  */
+class Dragon {
+ protected:
+  std::string m_name;
+  size_t m_age;
+  size_t m_size;
+  std::list<Treasure> m_treasures;
 
+ public:
+  Dragon(const std::string &name, size_t age, size_t size);
+  Dragon(const Dragon &) = delete;
+  Dragon &operator=(const Dragon &) = delete;
+
+  virtual ~Dragon() = default;
+
+  const std::string &GetName() const;
+  size_t GetAge() const;
+  size_t GetSize() const;
+  const std::list<Treasure> &GetTreasures() const;
+  virtual void Eat(std::list<Food> &foods) = 0;
+  virtual void Hoard(std::list<Treasure> &treasures) = 0;
+};
 
 /**
  * \brief TODO: operator << overloads the << stream operator for printing
@@ -88,3 +108,4 @@ additional
  * \return The output stream given as one of the arguments.
  *
  */
+std::ostream &operator<<(std::ostream &os, const Dragon &cave);

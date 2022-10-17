@@ -39,4 +39,10 @@ Fantasy dragon received: <Treasure's name>\n
 end.
  *
  */
-
+class FantasyDragon : public Dragon {
+ public:
+  FantasyDragon(const std::string &name, size_t age, size_t size);
+  ~FantasyDragon();
+  void Eat(std::list<Food> &foods);
+  void Hoard(std::list<Treasure> &treasures);
+};

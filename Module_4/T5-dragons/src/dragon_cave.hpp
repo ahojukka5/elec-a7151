@@ -1,5 +1,10 @@
 #pragma once
 
+#include <iostream>
+#include <list>
+
+#include "dragon.hpp"
+
 /**
  * \brief The DragonCave class is a sort of storage class for Dragons.
  *
@@ -34,7 +39,20 @@
  * but DOES NOT delete the Dragon object. The function returns nothing.
  */
 
+class DragonCave {
+ public:
+  DragonCave() = default;
+  DragonCave(const DragonCave&) = delete;
+  DragonCave& operator=(const DragonCave&) = delete;
+  ~DragonCave();
 
+  const std::list<Dragon*>& GetDragons() const;
+  void Accommodate(Dragon* dragon);
+  void Evict(const std::string& name);
+
+ private:
+  std::list<Dragon*> m_dragons;
+};
 
 /**
  * \brief TODO: operator << overloads the << stream operator for printing
@@ -62,3 +80,4 @@ DragonCave&).
  * \return The output stream given as one of the arguments.
  *
  */
+std::ostream& operator<<(std::ostream& os, const DragonCave& dc);
