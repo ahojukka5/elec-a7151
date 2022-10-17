@@ -4,7 +4,7 @@ DragonCave::~DragonCave() {
   for (const auto& dragon : m_dragons) {
     delete dragon;
   }
-  // m_dragons.clear();
+  m_dragons.clear();
 }
 
 const std::list<Dragon*>& DragonCave::GetDragons() const { return m_dragons; }
