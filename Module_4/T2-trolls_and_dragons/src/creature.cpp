@@ -13,4 +13,4 @@ std::ostream& operator<<(std::ostream& os, const Creature& c) {
   os << c.GetType() << " " << c.GetName() << " with " << c.GetHitPoints()
      << " HP";
   return os;
-};
+}
