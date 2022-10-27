@@ -56,9 +56,9 @@ class Aircraft : public Vehicle {
   static Aircraft* Read(std::istream& stream);
 
  private:
-  std::string m_model;
-  double m_wingspan;
-  unsigned int m_cruise_speed;
+  std::string model_;
+  double wingspan_;
+  unsigned int cruise_speed_;
 };
 
 #endif

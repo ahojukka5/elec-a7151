@@ -55,8 +55,8 @@ class Vehicle {
                                               char sep);
 
  private:
-  std::string m_register_number;
-  std::string m_owner;
+  std::string register_number_;
+  std::string owner_;
 };
 
 #endif

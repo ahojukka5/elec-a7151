@@ -7,17 +7,17 @@
 #include "boat.hpp"
 
 Register::~Register() {
-  for (auto vehicle : m_vehicles) delete vehicle;
-  m_vehicles.clear();
+  for (auto vehicle : vehicles_) delete vehicle;
+  vehicles_.clear();
 }
 
 void Register::Add(Vehicle *vehicle) {
-  if (vehicle != nullptr) m_vehicles.push_back(vehicle);
+  if (vehicle != nullptr) vehicles_.push_back(vehicle);
 }
 
 void Register::Save(const std::string &filename) const {
   std::ofstream os(filename);
-  for (auto vehicle : m_vehicles) {
+  for (auto vehicle : vehicles_) {
     vehicle->Write(os);
   }
   os.close();
@@ -54,7 +54,7 @@ int Register::Load(const std::string &filename) {
 }
 
 void Register::Print() {
-  for (auto vehicle : m_vehicles) vehicle->Print();
+  for (auto vehicle : vehicles_) vehicle->Print();
 }
 
-size_t Register::Size() const { return m_vehicles.size(); }
+size_t Register::Size() const { return vehicles_.size(); }

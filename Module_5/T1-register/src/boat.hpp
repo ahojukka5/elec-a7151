@@ -55,9 +55,9 @@ class Boat : public Vehicle {
   static Boat *Read(std::istream &stream);
 
  private:
-  std::string m_name;
-  double m_draft;
-  double m_power;
+  std::string name_;
+  double draft_;
+  double power_;
 };
 
 #endif

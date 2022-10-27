@@ -5,11 +5,11 @@
 #include <vector>
 
 Vehicle::Vehicle(std::string register_number, std::string owner)
-    : m_register_number(register_number), m_owner(owner) {}
+    : register_number_(register_number), owner_(owner) {}
 
-std::string Vehicle::GetRegisterNumber() const { return m_register_number; }
+std::string Vehicle::GetRegisterNumber() const { return register_number_; }
 
-std::string Vehicle::GetOwner() const { return m_owner; }
+std::string Vehicle::GetOwner() const { return owner_; }
 
 std::vector<std::string> Vehicle::ParseStream(std::istream &linestream,
                                               char sep) {

@@ -4,13 +4,13 @@ Aircraft::Aircraft(std::string register_number, std::string owner,
                    std::string model, double wingspan,
                    unsigned int cruise_speed)
     : Vehicle(register_number, owner),
-      m_model(model),
-      m_wingspan(wingspan),
-      m_cruise_speed(cruise_speed) {}
+      model_(model),
+      wingspan_(wingspan),
+      cruise_speed_(cruise_speed) {}
 
 void Aircraft::Write(std::ostream &os) {
-  os << "A;" << GetRegisterNumber() << ";" << GetOwner() << ";" << m_model
-     << ";" << m_wingspan << ";" << m_cruise_speed << std::endl;
+  os << "A;" << GetRegisterNumber() << ";" << GetOwner() << ";" << model_ << ";"
+     << wingspan_ << ";" << cruise_speed_ << std::endl;
 }
 
 void Aircraft::Print() { Write(std::cout); }

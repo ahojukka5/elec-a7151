@@ -70,7 +70,7 @@ class Register {
   size_t Size() const;
 
  private:
-  std::vector<Vehicle*> m_vehicles;
+  std::vector<Vehicle*> vehicles_;
 };
 
 #endif
