@@ -1,5 +1,9 @@
 #include "aircraft.hpp"
 
+#include <iostream>
+#include <sstream>
+#include <vector>
+
 Aircraft::Aircraft(std::string register_number, std::string owner,
                    std::string model, double wingspan,
                    unsigned int cruise_speed)

@@ -1,5 +1,9 @@
 #include "boat.hpp"
 
+#include <iostream>
+#include <sstream>
+#include <vector>
+
 Boat::Boat(std::string register_number, std::string owner, std::string name,
            double draft, double power)
     : Vehicle(register_number, owner),
