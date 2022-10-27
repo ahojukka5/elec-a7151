@@ -50,10 +50,6 @@ class Vehicle {
    */
   virtual void Print() = 0;
 
- protected:
-  static std::vector<std::string> ParseStream(std::istream& linestream,
-                                              char sep);
-
  private:
   std::string register_number_;
   std::string owner_;

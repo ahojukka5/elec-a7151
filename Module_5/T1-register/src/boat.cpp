@@ -14,7 +14,17 @@ void Boat::Write(std::ostream &stream) {
 
 void Boat::Print() { Write(std::cout); }
 
+std::vector<std::string> BoatParseStream(std::istream &linestream, char sep) {
+  std::vector<std::string> record;
+  while (linestream) {
+    std::string token;
+    if (!std::getline(linestream, token, sep)) break;
+    record.push_back(token);
+  }
+  return record;
+}
+
 Boat *Boat::Read(std::istream &stream) {
-  auto a = ParseStream(stream, ';');
+  auto a = BoatParseStream(stream, ';');
   return new Boat(a[1], a[2], a[3], std::stod(a[4]), std::stod(a[5]));
 }

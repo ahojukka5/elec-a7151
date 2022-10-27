@@ -15,7 +15,18 @@ void Aircraft::Write(std::ostream &os) {
 
 void Aircraft::Print() { Write(std::cout); }
 
+std::vector<std::string> AircraftParseStream(std::istream &linestream,
+                                             char sep) {
+  std::vector<std::string> record;
+  while (linestream) {
+    std::string token;
+    if (!std::getline(linestream, token, sep)) break;
+    record.push_back(token);
+  }
+  return record;
+}
+
 Aircraft *Aircraft::Read(std::istream &stream) {
-  auto a = ParseStream(stream, ';');
+  auto a = AircraftParseStream(stream, ';');
   return new Aircraft(a[1], a[2], a[3], std::stod(a[4]), std::stoul(a[5]));
 }
