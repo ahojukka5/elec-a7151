@@ -29,17 +29,20 @@ template <class T>
 class RestrictedPtr {
  private:
   T* m_ptr = nullptr;
-  int* m_cnt = new int(0);
+  int* m_cnt = nullptr;
 
   void incref() { (*m_cnt)++; }
-  void decref() { (*m_cnt)--; }
+
+  void decref() {
+    if ((*m_cnt) > 0) (*m_cnt)--;
+  }
 
  public:
   // constructor for a case when no parameters are given
-  explicit RestrictedPtr() {}
+  RestrictedPtr() {}
 
   // constructor for case when a raw pointer is given as a parameter
-  explicit RestrictedPtr(T* ptr) : m_ptr(ptr) { incref(); }
+  RestrictedPtr(T* ptr) : m_ptr(ptr), m_cnt(new int(1)) {}
 
   // copy constructor
   RestrictedPtr(RestrictedPtr<T>& lhs) {
@@ -57,14 +60,10 @@ class RestrictedPtr {
   ~RestrictedPtr() {
     decref();
     if (GetRefCount() == 0) {
-      if (m_ptr) {
-        delete m_ptr;
-        m_ptr = nullptr;
-      }
-      if (m_cnt) {
-        delete m_cnt;
-        m_cnt = nullptr;
-      }
+      delete m_ptr;
+      delete m_cnt;
+      m_ptr = nullptr;
+      m_cnt = nullptr;
     }
   }
 
