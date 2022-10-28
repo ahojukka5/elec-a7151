@@ -35,10 +35,11 @@ class RestrictedPtr {
   void decref() { (*m_cnt)--; }
 
  public:
-  // default constructor
-  explicit RestrictedPtr(T* ptr = nullptr) : m_ptr(ptr) {
-    if (m_ptr) incref();
-  }
+  // constructor for a case when no parameters are given
+  explicit RestrictedPtr() {}
+
+  // constructor for case when a raw pointer is given as a parameter
+  explicit RestrictedPtr(T* ptr) : m_ptr(ptr) { incref(); }
 
   // copy constructor
   RestrictedPtr(RestrictedPtr<T>& lhs) {
@@ -55,9 +56,15 @@ class RestrictedPtr {
   // destructor
   ~RestrictedPtr() {
     decref();
-    if (GetRefCount() == 0 && m_ptr) {
-      delete m_ptr;
-      m_ptr = nullptr;
+    if (GetRefCount() == 0) {
+      if (m_ptr) {
+        delete m_ptr;
+        m_ptr = nullptr;
+      }
+      if (m_cnt) {
+        delete m_cnt;
+        m_cnt = nullptr;
+      }
     }
   }
 
