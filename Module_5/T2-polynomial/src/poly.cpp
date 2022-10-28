@@ -56,3 +56,22 @@ Poly operator-(const Poly &a, const Poly &b) {
   c -= b;
   return c;
 }
+
+bool operator==(const Poly &a, const Poly &b) {
+  for (auto [exp, mul] : a) {
+    if (a[exp] != b[exp]) return false;
+  }
+  return true;
+}
+
+bool operator!=(const Poly &a, const Poly &b) { return !(a == b); }
+
+int get_order(const Poly &p) { return p.end()->first; }
+
+bool operator<(const Poly &a, const Poly &b) {
+  return get_order(a) < get_order(b);
+}
+
+bool operator>(const Poly &a, const Poly &b) {
+  return get_order(a) > get_order(b);
+}
