@@ -80,6 +80,10 @@ class RestrictedPtr {
     return *this;
   }
 
+  T& operator*() const { return *m_ptr; }
+
+  T* operator->() const { return m_ptr; }
+
   T& GetData() { return *m_ptr; }
 
   T* GetPointer() { return m_ptr; }
