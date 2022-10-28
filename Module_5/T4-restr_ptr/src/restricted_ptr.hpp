@@ -29,12 +29,15 @@ template <class T>
 class RestrictedPtr {
  private:
   T* m_ptr = nullptr;
-  int* m_cnt = nullptr;
+  int* m_cnt = new int(0);
+
+  void incref() { (*m_cnt)++; }
+  void decref() { (*m_cnt)--; }
 
  public:
   // default constructor
-  explicit RestrictedPtr(T* ptr = nullptr) : m_ptr(ptr), m_cnt(new int) {
-    if (m_ptr) (*m_cnt)++;
+  explicit RestrictedPtr(T* ptr = nullptr) : m_ptr(ptr) {
+    if (m_ptr) incref();
   }
 
   // copy constructor
@@ -42,7 +45,7 @@ class RestrictedPtr {
     if (lhs.GetRefCount() < 3) {
       m_ptr = lhs.GetPointer();
       m_cnt = lhs.m_cnt;
-      (*m_cnt) += 1;
+      incref();
     } else {
       m_ptr = nullptr;
       m_cnt = new int(1);
@@ -51,7 +54,7 @@ class RestrictedPtr {
 
   // destructor
   ~RestrictedPtr() {
-    (*m_cnt) -= 1;
+    decref();
     if (GetRefCount() == 0 && m_ptr) {
       delete m_ptr;
       m_ptr = nullptr;
@@ -63,7 +66,7 @@ class RestrictedPtr {
     if (lhs.GetRefCount() < 3) {
       m_ptr = lhs.GetPointer();
       m_cnt = lhs.m_cnt;
-      (*m_cnt) += 1;
+      incref();
     } else {
       m_ptr = nullptr;
       m_cnt = new int(1);
