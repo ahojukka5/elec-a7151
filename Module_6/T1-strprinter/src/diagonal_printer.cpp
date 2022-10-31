@@ -5,12 +5,12 @@ DiagonalPrinter *DiagonalPrinter::Clone() const {
 }
 
 StringPrinter &DiagonalPrinter::operator()(const std::string &str) {
-  os_ << first_ << std::endl;
+  if (!first_.empty()) os_ << first_ << std::endl;
   for (int i = 0, N = str.size(); i < N; i++) {
     std::string line(N, ' ');
     line[i] = str[i];
     os_ << line << std::endl;
   }
-  os_ << last_ << std::endl;
+  if (!last_.empty()) os_ << last_ << std::endl;
   return *this;
 }
