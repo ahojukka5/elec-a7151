@@ -37,15 +37,16 @@
 template <typename TA, typename TB, typename TC>
 class Triple {
  private:
-  TA m_A;
-  TB m_B;
-  TC m_C;
+  const TA m_A;
+  const TB m_B;
+  const TC m_C;
 
  public:
   Triple() = default;
 
   Triple(const TA& A, const TB& B, const TC& C) : m_A(A), m_B(B), m_C(C) {}
 
+  /*
   Triple(const Triple<TA, TB, TC>& T) {
     m_A = T.First();
     m_B = T.Second();
@@ -58,6 +59,7 @@ class Triple {
     m_C = T.Third();
     return *this;
   }
+  */
 
   const TA& First() const { return m_A; }
 
