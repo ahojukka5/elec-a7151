@@ -37,9 +37,9 @@
 template <typename TA, typename TB, typename TC>
 class Triple {
  private:
-  const TA m_A;
-  const TB m_B;
-  const TC m_C;
+  TA m_A;
+  TB m_B;
+  TC m_C;
 
  public:
   Triple() = default;
