@@ -1,18 +1,20 @@
-/* Add include guards here */
+#pragma once
+
+#include "string_printer.hpp"
 
 /**
  * @brief A class that is used to print strings diagonally (see below). The
  * class inherits (public inheritance) class StringPrinter.
- * 
- * TODO: Implement the following:
+ *
  * ------------
  * Functions:
- * 
+ *
  * A constructor that takes three parameters:
  *  - The first line, which is "" by default, i.e. it is not printed at all
- *  - The last line, which is "" by default, i.e. it is not printed at all either
+ *  - The last line, which is "" by default, i.e. it is not printed at all
+either
  *  - A reference to the output stream, which is std::cout by default
- * 
+ *
  * Overrides the necessary members from the base class.
  * ------------
  * Other:
@@ -32,4 +34,15 @@ l        \n
  * constructor. If the first line is empty, it is not printed. The same applies
  * to the last line.
  */
+class DiagonalPrinter : public StringPrinter {
+ public:
+  DiagonalPrinter(const std::string &first = "", const std::string &last = "",
+                  std::ostream &os = std::cout)
+      : StringPrinter(os), first_(first), last_(last) {}
+  virtual DiagonalPrinter *Clone() const;
+  virtual StringPrinter &operator()(const std::string &str);
 
+ private:
+  std::string first_;
+  std::string last_;
+};
